@@ -1,0 +1,42 @@
+# _config.yml
+title: Mohamed Nana
+email: mohamed.nana@psemail.eu
+description: >-
+  Applied Economist specializing in Development Economics, Applied Econometrics, and Machine Learning.
+baseurl: ""
+url: "https://mnanagit.github.io"  # Must include "https://"
+twitter_username: MnanaMohamed
+github_username: mnanagit
+
+# Theme
+theme: minima
+
+sass:
+  quiet: true
+
+# Collections
+collections:
+  research:
+    output: true  # Generates pages for each research paper
+    permalink: /research/:path/
+
+# Navigation
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+# Plugins
+plugins:
+  - jekyll-feed
+
+# Exclude unnecessary files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+
