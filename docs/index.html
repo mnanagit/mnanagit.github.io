@@ -1,219 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Claude Code Setup</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed NANA — ETH Zürich</title>
+  <meta name="description" content="Mohamed NANA — Scientific Assistant at ETH Zürich. Development Economics researcher." />
+
+  <!-- Tailwind CSS (CDN, no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'eth-blue':   '#215CAF',
+            'eth-petrol': '#007894',
+            'eth-bronze': '#8C5100',
+            'eth-dark':   '#1F407A',
+            'eth-tint':   '#E8EEF7',
+            'eth-grey':   '#6F6F6F',
+          },
+          fontFamily: {
+            sans: ['"Source Sans Pro"', '"Helvetica Neue"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.5em 1.5em;
-      color: #222;
-      line-height: 1.8;
-      background: #fff;
-    }
+    html { scroll-behavior: smooth; }
 
-    h1 {
-      font-size: 1.9em;
-      font-weight: normal;
-      color: #012169;
-      margin-bottom: 0.1em;
-      line-height: 1.3;
-    }
+    /* Paper card hover lift */
+    .paper-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .paper-card:hover { box-shadow: 0 6px 20px rgba(33,92,175,0.12); transform: translateY(-2px); }
 
-    h2 {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #012169;
-      margin-top: 2.5em;
-      margin-bottom: 0.6em;
-      padding-bottom: 0.3em;
-      border-bottom: 1px solid #ddd;
-    }
-
-    p { margin: 0.8em 0; }
-
-    a { color: #012169; }
-    a:hover { color: #B9975B; }
-
-    .wip {
-      background: #fffbf0;
-      border: 1px solid #e8dcc8;
-      padding: 0.9em 1.2em;
-      margin-bottom: 2em;
-      font-size: 0.93em;
-      color: #6b5a30;
-      line-height: 1.7;
-    }
-
-    .byline {
-      color: #888;
-      font-size: 0.9em;
-      margin-bottom: 2em;
-    }
-
-    .guide-btn {
-      display: inline-block;
-      background: #012169;
-      color: #fff;
-      padding: 0.6em 1.4em;
-      text-decoration: none;
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 0.92em;
-      margin-top: 0.5em;
-    }
-    .guide-btn:hover { background: #B9975B; color: #fff; }
-
-    .overview-list {
-      list-style: none;
-      padding: 0;
-    }
-    .overview-list li {
-      padding: 0.5em 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .overview-list li:last-child { border-bottom: none; }
-    .overview-list strong {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 0.88em;
-      color: #012169;
-    }
-    .overview-list .desc {
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    code {
-      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-      font-size: 0.85em;
-      background: #f5f5f5;
-      padding: 0.15em 0.4em;
-    }
-
-    pre {
-      background: #f8f8f8;
-      border: 1px solid #e5e5e5;
-      padding: 1.2em 1.4em;
-      overflow-x: auto;
-      font-size: 0.85em;
-      line-height: 1.7;
-      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-    }
-
-    .footer {
-      margin-top: 3em;
-      padding-top: 1.5em;
-      border-top: 1px solid #ddd;
-      font-size: 0.85em;
-      color: #999;
-    }
-
-    /* ── Responsive: tablets ── */
-    @media (max-width: 768px) {
-      body {
-        font-size: 1.1rem;
-        padding: 1.5em 1em;
-      }
-
-      h1 { font-size: 1.6em; }
-      h2 { font-size: 1.1em; }
-
-      pre {
-        font-size: 0.78em;
-        padding: 0.9em 1em;
-      }
-    }
-
-    /* ── Responsive: phones ── */
-    @media (max-width: 480px) {
-      body {
-        font-size: 1rem;
-        padding: 1.2em 0.8em;
-        line-height: 1.6;
-      }
-
-      h1 { font-size: 1.4em; }
-
-      .guide-btn {
-        display: block;
-        text-align: center;
-        padding: 0.7em 1em;
-      }
-
-      pre {
-        font-size: 0.72em;
-        padding: 0.8em;
-        word-break: break-all;
-        white-space: pre-wrap;
-      }
-
-      .overview-list li {
-        padding: 0.6em 0;
-      }
-
-      .overview-list .desc {
-        font-size: 0.85em;
-      }
-    }
+    /* Abstract toggle arrow */
+    details > summary { cursor: pointer; list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary .toggle-arrow::after { content: " ▼"; font-size: 0.7em; }
+    details[open] > summary .toggle-arrow::after { content: " ▲"; font-size: 0.7em; }
   </style>
 </head>
-<body>
 
-  <h1>My Claude Code Setup</h1>
-  <div class="byline">Pedro H. C. Sant'Anna &middot; Emory University</div>
+<body class="font-sans text-gray-800 bg-white antialiased">
 
-  <div class="wip">
-    <strong>Work in progress.</strong> This summarizes how I use Claude Code for academic work &mdash; lecture slides, R scripts, Beamer-to-Quarto pipelines. I keep learning and updating these files. Sharing what I've figured out so far with friends and colleagues.
-  </div>
+  <!-- =====================================================
+       NAVIGATION
+  ====================================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#top" class="text-eth-blue font-semibold text-lg tracking-tight hover:text-eth-dark transition-colors">
+        Mohamed NANA
+      </a>
+      <ul class="flex gap-5 text-sm font-medium text-eth-grey">
+        <li><a href="#research" class="hover:text-eth-blue transition-colors">Research</a></li>
+        <li><a href="#teaching" class="hover:text-eth-blue transition-colors">Teaching</a></li>
+        <li><a href="#code"     class="hover:text-eth-blue transition-colors">Data &amp; Code</a></li>
+        <li>
+          <a href="#" class="px-3 py-1 rounded border border-eth-blue text-eth-blue hover:bg-eth-tint transition-colors text-xs font-semibold uppercase tracking-wide">
+            CV
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <p>A starter kit for academics using <a href="https://code.claude.com/docs/en/overview">Claude Code</a> with LaTeX/Beamer, R, and Quarto. You describe what you want; Claude plans the approach, runs specialized agents, fixes issues, verifies quality, and presents results &mdash; like a contractor who handles the entire job. Extracted from a PhD course I developed (Econ 730 at Emory, 6 lectures, 800+ slides).</p>
+  <main id="top">
 
-  <p>
-    <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>
-  </p>
+    <!-- =====================================================
+         HERO / BIO
+    ====================================================== -->
+    <section class="bg-gradient-to-b from-eth-tint to-white py-20 px-6">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center sm:items-start gap-10">
 
-  <h2>What's in the template</h2>
+        <!-- Avatar placeholder -->
+        <div class="flex-shrink-0 w-36 h-36 rounded-full bg-eth-blue/10 border-2 border-eth-blue/20
+                    flex items-center justify-center text-eth-blue text-4xl font-bold select-none">
+          MN
+        </div>
 
-  <ul class="overview-list">
-    <li><strong>Contractor mode orchestrator</strong> <span class="desc">&mdash; you describe the task; Claude autonomously plans, implements, reviews with agents, fixes issues, and re-verifies until quality gates pass</span></li>
-    <li><strong>Beamer &rarr; Quarto pipeline</strong> <span class="desc">&mdash; 11-phase translation with TikZ-to-SVG and ggplot-to-plotly conversion</span></li>
-    <li><strong>10 specialized agents</strong> <span class="desc">&mdash; proofreader, slide auditor, pedagogy reviewer, R reviewer, TikZ critic, domain reviewer, adversarial QA pair, translator, verifier</span></li>
-    <li><strong>Adversarial critic-fixer loop</strong> <span class="desc">&mdash; two agents that check each other's work across up to 5 rounds &mdash; the critic can't fix, the fixer can't approve</span></li>
-    <li><strong>Quality scoring with mandatory verification</strong> <span class="desc">&mdash; every file scored 0&ndash;100; nothing ships below 80; the orchestrator verifies every output before reporting done</span></li>
-    <li><strong>19 slash commands + 17 context-aware rules</strong> <span class="desc">&mdash; <code>/compile-latex</code>, <code>/proofread</code>, <code>/deploy</code>, <code>/commit</code>, <code>/qa-quarto</code>, <code>/lit-review</code>, <code>/review-paper</code>, <code>/data-analysis</code>, and more &mdash; plus quality gates, notation consistency, and R conventions</span></li>
-    <li><strong>Research workflow skills</strong> <span class="desc">&mdash; <code>/lit-review</code> for literature synthesis, <code>/research-ideation</code> for hypothesis generation, <code>/interview-me</code> to formalize ideas, <code>/review-paper</code> for manuscript review, <code>/data-analysis</code> for end-to-end R analysis</span></li>
-    <li><strong>Smart hooks</strong> <span class="desc">&mdash; macOS desktop notifications, file protection for bibliography and settings, pre-compaction context snapshots to session logs</span></li>
-    <li><strong>Plan-first workflow with continuous learning</strong> <span class="desc">&mdash; non-trivial tasks start in plan mode; <code>[LEARN:tag]</code> corrections persist in MEMORY.md across sessions; plans survive context compression</span></li>
-    <li><strong>Research exploration workflow</strong> <span class="desc">&mdash; structured <code>explorations/</code> sandbox with fast-track prototyping (60/100 threshold), simplified orchestrator for R/research, and merge-only quality reporting</span></li>
-    <li><strong>Automated session log enforcement</strong> <span class="desc">&mdash; a lightweight Stop hook reminds Claude to keep session logs current; Beamer-Quarto sync enforced via auto-loaded rules</span></li>
-  </ul>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold text-eth-dark leading-tight">
+            Mohamed NANA
+          </h1>
+          <p class="mt-1 text-eth-petrol font-semibold text-lg">
+            Scientific Assistant &middot; ETH Zürich
+          </p>
 
-  <h2>Getting started</h2>
+          <!-- Bio — replace placeholder text with your own -->
+          <p class="mt-4 text-gray-600 leading-relaxed max-w-2xl">
+            I am a Scientific Assistant at ETH Zürich working in Development Economics.
+            My research interests lie in development economics, with a focus on health and public infrastructure, and on how new technologies can improve welfare in sub-Saharan Africa.]</em>.
+          </p>
 
-<pre># Fork this repo on GitHub, then:
-git clone https://github.com/YOUR_USERNAME/claude-code-my-workflow.git my-project
-cd my-project</pre>
+          <!-- Research interest badges -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-petrol/10 text-eth-petrol border border-eth-petrol/20">
+              Development Economics
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-blue/10 text-eth-blue border border-eth-blue/20">
+              Institutions &amp; Policy
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-bronze/10 text-eth-bronze border border-eth-bronze/20">
+              Causal Inference
+            </span>
+            <!-- Add more badges here -->
+          </div>
 
-  <p>Then start Claude Code and paste the <a href="workflow-guide.html#sec-first-session">starter prompt</a> from the guide. Describe your project in 2&ndash;3 sentences and Claude will read all the configuration files, fill in the placeholders, and adapt the workflow to your use case.</p>
+          <!-- Contact links -->
+          <div class="mt-5 flex flex-wrap gap-4 text-sm text-eth-grey">
+            <a href="mailto:monana@ethz.ch" class="hover:text-eth-blue transition-colors">
+              ✉ monana@ethz.ch
+            </a>
+            <a href="https://github.com/mnanagit" target="_blank" rel="noopener" class="hover:text-eth-blue transition-colors">
+              GitHub
+            </a>
+            <!-- Add Google Scholar, SSRN, LinkedIn, Twitter/X as needed -->
+          </div>
+        </div>
 
-  <p>The <a href="workflow-guide.html">full guide</a> walks through everything: setup, agents, quality gates, workflow patterns, and customization.</p>
+      </div>
+    </section>
 
-  <p>
-    <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>
-    &nbsp;&nbsp;
-    <a class="guide-btn" href="workflow-guide.html#sec-first-session" style="background: #B9975B;">Copy the starter prompt</a>
-  </p>
+    <!-- =====================================================
+         RESEARCH
+    ====================================================== -->
+    <section id="research" class="py-16 px-6">
+      <div class="max-w-5xl mx-auto">
 
-  <h2>Source</h2>
+        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
+          Research
+        </h2>
 
-  <p>Everything is on GitHub: <a href="https://github.com/pedrohcgs/claude-code-my-workflow">pedrohcgs/claude-code-my-workflow</a></p>
+        <!-- Working Papers -->
+        <h3 class="text-sm font-semibold text-eth-grey uppercase tracking-widest mb-5">
+          Working Papers
+        </h3>
 
-  <div class="footer">
-    MIT License. Use freely for teaching, research, or any academic purpose.
-  </div>
+        <!-- Paper card — duplicate and fill for each paper -->
+        <div class="paper-card bg-white border border-gray-100 rounded-lg p-6 mb-4 shadow-sm">
+          <h4 class="font-semibold text-eth-dark text-base leading-snug">
+            <a href="#" class="hover:text-eth-blue transition-colors">
+              [Paper Title — Replace This]
+            </a>
+          </h4>
+          <p class="mt-1 text-sm text-eth-grey">
+            Mohamed NANA
+            &middot; <span class="italic">Working paper, 2025</span>
+          </p>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-xs font-medium bg-eth-petrol/10 text-eth-petrol">
+              Development Economics
+            </span>
+          </div>
+          <details class="mt-3">
+            <summary class="text-sm text-eth-blue font-medium select-none">
+              <span class="toggle-arrow">Abstract</span>
+            </summary>
+            <p class="mt-2 text-sm text-gray-600 leading-relaxed bg-gray-50 rounded p-3">
+              [Abstract text goes here. Describe the paper's question, method, and main findings
+              in 3–5 sentences.]
+            </p>
+          </details>
+          <div class="mt-3 flex gap-3 text-xs font-semibold">
+            <a href="#" class="text-eth-blue hover:underline">PDF</a>
+            <a href="#" class="text-eth-blue hover:underline">SSRN</a>
+          </div>
+        </div>
+        <!-- End paper card -->
+
+        <!-- Publications -->
+        <h3 class="text-sm font-semibold text-eth-grey uppercase tracking-widest mt-10 mb-5">
+          Publications
+        </h3>
+        <p class="text-sm text-eth-grey italic">
+          Publications will appear here.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TEACHING
+    ====================================================== -->
+    <section id="teaching" class="py-16 px-6 bg-eth-tint/40">
+      <div class="max-w-5xl mx-auto">
+
+        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
+          Teaching
+        </h2>
+        <p class="text-sm text-eth-grey italic">
+          Teaching materials and course information will appear here.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         DATA & CODE
+    ====================================================== -->
+    <section id="code" class="py-16 px-6">
+      <div class="max-w-5xl mx-auto">
+
+        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
+          Data &amp; Code
+        </h2>
+        <p class="text-sm text-eth-grey italic">
+          Replication packages and code repositories will appear here.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="border-t border-gray-100 py-8 px-6 text-center text-xs text-eth-grey">
+    <p>
+      Mohamed NANA &middot; Scientific Assistant &middot;
+      <a href="https://ethz.ch" target="_blank" rel="noopener" class="hover:text-eth-blue transition-colors">
+        ETH Zürich
+      </a>
+    </p>
+    <p class="mt-1">Last updated: February 2026</p>
+  </footer>
 
 </body>
 </html>

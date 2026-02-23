@@ -48,26 +48,22 @@ Repeat
 
 ---
 
-## Non-Negotiables (Customize These)
+## Non-Negotiables
 
-<!-- Replace with YOUR project's locked-in preferences -->
-
-- [YOUR PATH CONVENTION] (e.g., `here::here()` for R, relative paths for LaTeX)
-- [YOUR SEED CONVENTION] (e.g., `set.seed()` once at top for stochastic code)
-- [YOUR FIGURE STANDARDS] (e.g., white bg, 300 DPI, custom theme)
-- [YOUR COLOR PALETTE] (e.g., institutional colors)
-- [YOUR TOLERANCE THRESHOLDS] (e.g., 1e-6 for point estimates)
+- **Paths:** always relative; use `here::here()` in R — no hardcoded machine paths ever
+- **Seeds:** `set.seed(42)` once at the top of any stochastic R script
+- **Figures:** white background, 300 DPI minimum, saved to `Figures/` with descriptive snake_case names
+- **Colors:** ETH Blue `#215CAF` (primary), ETH Petrol `#007894` (accent), Grey `#6F6F6F` (text) — no other brand colors without approval
+- **Responsiveness:** all HTML pages must render correctly at 320 px, 768 px, and 1200 px viewport widths
 
 ---
 
 ## Preferences
 
-<!-- Fill in as you discover your working style -->
-
-**Visual:** [How you want figures/plots handled]
-**Reporting:** [Concise bullets? Detailed prose? Details on request?]
-**Session logs:** Always (post-plan, incremental, end-of-session)
-**Replication:** [How strict? Flag near-misses?]
+**Visual:** Publication-ready; no chart junk; Plotly for interactive web charts; ggplot2 for static R figures
+**Reporting:** Concise bullets in summary; detailed prose on request only
+**Session logs:** Always — post-plan, incremental (1-3 lines per decision), end-of-session
+**Replication:** Strict — flag any near-miss; no hardcoded paths; R scripts must run top-to-bottom on a clean session
 
 ---
 

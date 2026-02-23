@@ -5,8 +5,8 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at docs/workflow-guide.html for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** Mohamed NANA — Personal Academic Website
+**Institution:** ETH Zürich (Scientific Assistant, Development Economics)
 **Branch:** main
 
 ---
@@ -15,7 +15,7 @@
 
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
 - **Verify after** -- compile/render and confirm output at the end of every task
-- **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
+- **Single source of truth** -- HTML/Quarto `.qmd` is authoritative; Beamer `.tex` derives from it (website-first)
 - **Quality gates** -- nothing ships below 80/100
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to MEMORY.md
 
@@ -24,20 +24,23 @@
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
+website-momo-nana/
 ├── CLAUDE.MD                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
 ├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
-├── Quarto/                      # RevealJS .qmd files + theme
-├── docs/                        # GitHub Pages (auto-generated)
+├── Figures/                     # Figures and plot assets
+├── Quarto/                      # Quarto .qmd files + eth-clean.scss theme
+├── docs/                        # GitHub Pages root (auto-generated)
+│   ├── index.html               # Homepage
+│   └── slides/                  # Rendered presentations
 ├── scripts/                     # Utility scripts + R code
+│   └── R/                       # R analysis scripts
 ├── quality_reports/             # Plans, session logs, merge reports
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+├── master_supporting_docs/      # Reference papers and existing slides
+├── Slides/                      # Beamer .tex files (inactive — future use)
+└── Preambles/                   # LaTeX headers (inactive — future use)
 ```
 
 ---
@@ -45,17 +48,21 @@
 ## Commands
 
 ```bash
-# LaTeX (3-pass, XeLaTeX only)
-cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-BIBINPUTS=..:$BIBINPUTS bibtex file
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
+# Render Quarto website / slides
+quarto render Quarto/file.qmd          # Single file
+quarto render                           # All files (requires _quarto.yml)
 
-# Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
+# Deploy to GitHub Pages
+./scripts/sync_to_docs.sh              # Sync all rendered output to docs/
+./scripts/sync_to_docs.sh LectureN    # Sync specific lecture
 
 # Quality score
 python scripts/quality_score.py Quarto/file.qmd
+python scripts/quality_score.py docs/index.html
+
+# LaTeX (3-pass, XeLaTeX — future use when Slides/ is active)
+# cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
+# BIBINPUTS=..:$BIBINPUTS bibtex file && (repeat xelatex twice more)
 ```
 
 ---
@@ -96,38 +103,33 @@ python scripts/quality_score.py Quarto/file.qmd
 
 ---
 
-<!-- CUSTOMIZE: Replace the example entries below with your own
-     Beamer environments and Quarto CSS classes. These are examples
-     from the original project — delete them and add yours. -->
+## Quarto / Website CSS Classes
+
+| Class             | Effect                              | Use Case                        |
+|-------------------|-------------------------------------|---------------------------------|
+| `.paper-card`     | Card with border + hover shadow     | Publication entries             |
+| `.badge`          | ETH Petrol pill tag                 | Field / topic labels            |
+| `.hero`           | Full-width ETH Blue banner          | Landing page hero section       |
+| `.section-title`  | ETH Blue heading + underline        | Section headings                |
+| `.abstract`       | Collapsible grey block              | Paper abstracts                 |
+| `.smaller`        | 85% font size                       | Dense content, footnotes        |
 
 ## Beamer Custom Environments
 
-| Environment       | Effect        | Use Case       |
-|-------------------|---------------|----------------|
-| `[your-env]`      | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `keybox` | Gold background box | Key points |
-| `highlightbox` | Gold left-accent box | Highlights |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions |
--->
-
-## Quarto CSS Classes
-
-| Class              | Effect        | Use Case       |
-|--------------------|---------------|----------------|
-| `[.your-class]`    | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `.smaller` | 85% font | Dense content slides |
-| `.positive` | Green bold | Good annotations |
+<!-- Beamer / Slides infrastructure is inactive (future use).
+     When Slides/ is activated, add your environments here.
+     Example entries:
+     | `keybox` | ETH Blue background box | Key points |
+     | `definitionbox[Title]` | ETH-bordered titled box | Formal definitions |
 -->
 
 ---
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-|---------|--------|--------|-------------|
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
-| 2: [Topic] | `Lecture02_Topic.tex` | -- | [Brief description] |
+| Section    | File               | Status    | Key Content                          |
+|------------|--------------------|-----------|--------------------------------------|
+| Home       | `docs/index.html`  | Active    | Bio, research interests, recent work |
+| Research   | TBD                | Planned   | Working papers, publications         |
+| Teaching   | TBD                | Planned   | Course materials                     |
+| Data/Code  | TBD                | Planned   | Replication packages                 |

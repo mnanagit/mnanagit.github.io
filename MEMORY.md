@@ -70,3 +70,11 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 [LEARN:meta] Dogfooding principles must be enforced: plan-first, spec-then-plan, quality gates, session logs → we follow our own guide.
 
 [LEARN:meta] Template development work (building infrastructure, docs) doesn't create session logs in quality_reports/ → those are for user work (slides, analysis), not meta-work. Keeps template clean for users who fork.
+
+## Project Setup (website-momo-nana)
+
+[LEARN:project] This is a personal academic website for Mohamed NANA (Scientific Assistant, ETH Zürich, Development Economics). Primary deliverable: GitHub Pages site at docs/index.html. LaTeX/Beamer infrastructure present but inactive — activate when presentations are needed.
+
+[LEARN:branding] ETH Zürich color palette: Primary Blue #215CAF, Petrol accent #007894, Bronze #8C5100, Dark Blue #1F407A, Grey #6F6F6F. Quarto/RevealJS theme: Quarto/eth-clean.scss (forked from emory-clean.scss).
+
+[LEARN:workflow] Website project state tracked in CLAUDE.md "Website Sections" table (replaces template's "Lectures" table). Sections: Home (active), Research (planned), Teaching (planned), Data/Code (planned).
