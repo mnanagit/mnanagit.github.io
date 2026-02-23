@@ -6,231 +6,321 @@
   <title>Mohamed NANA — ETH Zürich</title>
   <meta name="description" content="Mohamed NANA — Scientific Assistant at ETH Zürich. Development Economics researcher." />
 
-  <!-- Tailwind CSS (CDN, no build step) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'eth-blue':   '#215CAF',
-            'eth-petrol': '#007894',
-            'eth-bronze': '#8C5100',
-            'eth-dark':   '#1F407A',
-            'eth-tint':   '#E8EEF7',
-            'eth-grey':   '#6F6F6F',
-          },
-          fontFamily: {
-            sans: ['"Source Sans Pro"', '"Helvetica Neue"', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-
-  <!-- Google Fonts -->
+  <!-- Montserrat font (matching atagade.com) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Reset & base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #383838;
+      --text:    #f9f9f9;
+      --muted:   #aaaaaa;
+      --accent:  #cc0000;
+      --divider: rgba(255,255,255,0.10);
+      --max-w:   760px;
+    }
+
     html { scroll-behavior: smooth; }
 
-    /* Paper card hover lift */
-    .paper-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
-    .paper-card:hover { box-shadow: 0 6px 20px rgba(33,92,175,0.12); transform: translateY(-2px); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* Abstract toggle arrow */
-    details > summary { cursor: pointer; list-style: none; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    a:hover { opacity: 0.80; }
+
+    /* ── Nav ──────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--divider);
+      padding: 18px 24px;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 24px;
+      list-style: none;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      align-items: center;
+    }
+    nav a {
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: var(--accent); opacity: 1; }
+    nav .cv-link {
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+    }
+    nav .cv-link:hover { background: var(--accent); color: #fff; opacity: 1; }
+
+    /* ── Main wrapper ─────────────────────────────── */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* ── Hero ─────────────────────────────────────── */
+    .hero {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(204,0,0,0.06);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-text h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .hero-text .title {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-text .bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #d8d8d8;
+      max-width: 560px;
+    }
+
+    /* Contact / social row */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .contact-row a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .contact-row a:hover { color: var(--accent); opacity: 1; }
+
+    /* ── Section headings ─────────────────────────── */
+    section {
+      margin-bottom: 48px;
+    }
+
+    section h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--divider);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Paper entries ────────────────────────────── */
+    .paper {
+      margin-bottom: 24px;
+    }
+
+    .paper .paper-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .paper .paper-title a { color: var(--text); }
+    .paper .paper-title a:hover { color: var(--accent); opacity: 1; }
+
+    .paper .paper-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .paper-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Abstract toggle */
+    details { margin-top: 6px; }
+    details > summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-block;
+    }
     details > summary::-webkit-details-marker { display: none; }
-    details > summary .toggle-arrow::after { content: " ▼"; font-size: 0.7em; }
-    details[open] > summary .toggle-arrow::after { content: " ▲"; font-size: 0.7em; }
+    details > summary::after { content: " ↓"; }
+    details[open] > summary::after { content: " ↑"; }
+
+    details .abstract-text {
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #c8c8c8;
+      border-left: 2px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    /* ── Placeholder text ─────────────────────────── */
+    .placeholder {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 24px 24px 48px;
+      border-top: 1px solid var(--divider);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { flex-direction: column; gap: 16px; }
+      .avatar { width: 72px; height: 72px; font-size: 18px; }
+      .hero-text h1 { font-size: 1.5rem; }
+      nav ul { gap: 4px 16px; }
+    }
   </style>
 </head>
 
-<body class="font-sans text-gray-800 bg-white antialiased">
+<body>
 
-  <!-- =====================================================
-       NAVIGATION
-  ====================================================== -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="text-eth-blue font-semibold text-lg tracking-tight hover:text-eth-dark transition-colors">
-        Mohamed NANA
-      </a>
-      <ul class="flex gap-5 text-sm font-medium text-eth-grey">
-        <li><a href="#research" class="hover:text-eth-blue transition-colors">Research</a></li>
-        <li><a href="#teaching" class="hover:text-eth-blue transition-colors">Teaching</a></li>
-        <li><a href="#code"     class="hover:text-eth-blue transition-colors">Data &amp; Code</a></li>
-        <li>
-          <a href="#" class="px-3 py-1 rounded border border-eth-blue text-eth-blue hover:bg-eth-tint transition-colors text-xs font-semibold uppercase tracking-wide">
-            CV
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <!-- ── Navigation ─────────────────────────────────── -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#code">Data &amp; Code</a></li>
+      <li><a href="#" class="cv-link">CV</a></li>
+    </ul>
+  </nav>
 
-  <main id="top">
+  <!-- ── Main content ───────────────────────────────── -->
+  <main id="about">
 
-    <!-- =====================================================
-         HERO / BIO
-    ====================================================== -->
-    <section class="bg-gradient-to-b from-eth-tint to-white py-20 px-6">
-      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center sm:items-start gap-10">
-
-        <!-- Avatar placeholder -->
-        <div class="flex-shrink-0 w-36 h-36 rounded-full bg-eth-blue/10 border-2 border-eth-blue/20
-                    flex items-center justify-center text-eth-blue text-4xl font-bold select-none">
-          MN
+    <!-- Hero / Bio -->
+    <div class="hero">
+      <div class="avatar">MN</div>
+      <div class="hero-text">
+        <h1>Mohamed NANA</h1>
+        <p class="title">Scientific Assistant &middot; ETH Zürich</p>
+        <p class="bio">
+          I am a Scientific Assistant at ETH Zürich working in Development Economics.
+          My research interests lie in development economics, with a focus on health
+          and public infrastructure, and on how new technologies can improve welfare
+          in sub-Saharan Africa.
+        </p>
+        <div class="contact-row">
+          <a href="mailto:monana@ethz.ch">monana@ethz.ch</a>
+          <a href="https://github.com/mnanagit" target="_blank" rel="noopener">GitHub</a>
+          <!-- Add Google Scholar, SSRN, LinkedIn, Twitter/X as needed -->
         </div>
-
-        <div>
-          <h1 class="text-3xl md:text-4xl font-bold text-eth-dark leading-tight">
-            Mohamed NANA
-          </h1>
-          <p class="mt-1 text-eth-petrol font-semibold text-lg">
-            Scientific Assistant &middot; ETH Zürich
-          </p>
-
-          <!-- Bio — replace placeholder text with your own -->
-          <p class="mt-4 text-gray-600 leading-relaxed max-w-2xl">
-            I am a Scientific Assistant at ETH Zürich working in Development Economics.
-            My research interests lie in development economics, with a focus on health and public infrastructure, and on how new technologies can improve welfare in sub-Saharan Africa.
-          </p>
-
-          <!-- Research interest badges -->
-          <div class="mt-5 flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-petrol/10 text-eth-petrol border border-eth-petrol/20">
-              Development Economics
-            </span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-blue/10 text-eth-blue border border-eth-blue/20">
-              Institutions &amp; Policy
-            </span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-eth-bronze/10 text-eth-bronze border border-eth-bronze/20">
-              Causal Inference
-            </span>
-            <!-- Add more badges here -->
-          </div>
-
-          <!-- Contact links -->
-          <div class="mt-5 flex flex-wrap gap-4 text-sm text-eth-grey">
-            <a href="mailto:monana@ethz.ch" class="hover:text-eth-blue transition-colors">
-              ✉ monana@ethz.ch
-            </a>
-            <a href="https://github.com/mnanagit" target="_blank" rel="noopener" class="hover:text-eth-blue transition-colors">
-              GitHub
-            </a>
-            <!-- Add Google Scholar, SSRN, LinkedIn, Twitter/X as needed -->
-          </div>
-        </div>
-
       </div>
+    </div>
+
+    <!-- ── Research ──────────────────────────────────── -->
+    <section id="research">
+
+      <h2>Working Papers</h2>
+
+      <!-- Paper entry — duplicate for each paper -->
+      <div class="paper">
+        <p class="paper-title">
+          <a href="#">[Paper Title — Replace This]</a>
+        </p>
+        <p class="paper-meta">
+          Mohamed NANA &mdash; <em>Working paper, 2025</em>
+        </p>
+        <details>
+          <summary>Abstract</summary>
+          <p class="abstract-text">
+            [Abstract text goes here. Describe the paper's question, method, and main
+            findings in 3–5 sentences.]
+          </p>
+        </details>
+        <div class="paper-links">
+          <a href="#">PDF</a>
+          <a href="#">SSRN</a>
+        </div>
+      </div>
+      <!-- End paper entry -->
+
+      <h2 style="margin-top: 36px;">Publications</h2>
+      <p class="placeholder">Publications will appear here.</p>
+
     </section>
 
-    <!-- =====================================================
-         RESEARCH
-    ====================================================== -->
-    <section id="research" class="py-16 px-6">
-      <div class="max-w-5xl mx-auto">
-
-        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
-          Research
-        </h2>
-
-        <!-- Working Papers -->
-        <h3 class="text-sm font-semibold text-eth-grey uppercase tracking-widest mb-5">
-          Working Papers
-        </h3>
-
-        <!-- Paper card — duplicate and fill for each paper -->
-        <div class="paper-card bg-white border border-gray-100 rounded-lg p-6 mb-4 shadow-sm">
-          <h4 class="font-semibold text-eth-dark text-base leading-snug">
-            <a href="#" class="hover:text-eth-blue transition-colors">
-              [Paper Title — Replace This]
-            </a>
-          </h4>
-          <p class="mt-1 text-sm text-eth-grey">
-            Mohamed NANA
-            &middot; <span class="italic">Working paper, 2025</span>
-          </p>
-          <div class="mt-2 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded text-xs font-medium bg-eth-petrol/10 text-eth-petrol">
-              Development Economics
-            </span>
-          </div>
-          <details class="mt-3">
-            <summary class="text-sm text-eth-blue font-medium select-none">
-              <span class="toggle-arrow">Abstract</span>
-            </summary>
-            <p class="mt-2 text-sm text-gray-600 leading-relaxed bg-gray-50 rounded p-3">
-              [Abstract text goes here. Describe the paper's question, method, and main findings
-              in 3–5 sentences.]
-            </p>
-          </details>
-          <div class="mt-3 flex gap-3 text-xs font-semibold">
-            <a href="#" class="text-eth-blue hover:underline">PDF</a>
-            <a href="#" class="text-eth-blue hover:underline">SSRN</a>
-          </div>
-        </div>
-        <!-- End paper card -->
-
-        <!-- Publications -->
-        <h3 class="text-sm font-semibold text-eth-grey uppercase tracking-widest mt-10 mb-5">
-          Publications
-        </h3>
-        <p class="text-sm text-eth-grey italic">
-          Publications will appear here.
-        </p>
-
-      </div>
+    <!-- ── Teaching ──────────────────────────────────── -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <p class="placeholder">Teaching materials and course information will appear here.</p>
     </section>
 
-    <!-- =====================================================
-         TEACHING
-    ====================================================== -->
-    <section id="teaching" class="py-16 px-6 bg-eth-tint/40">
-      <div class="max-w-5xl mx-auto">
-
-        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
-          Teaching
-        </h2>
-        <p class="text-sm text-eth-grey italic">
-          Teaching materials and course information will appear here.
-        </p>
-
-      </div>
-    </section>
-
-    <!-- =====================================================
-         DATA & CODE
-    ====================================================== -->
-    <section id="code" class="py-16 px-6">
-      <div class="max-w-5xl mx-auto">
-
-        <h2 class="text-2xl font-bold text-eth-blue border-b-2 border-eth-blue/20 pb-2 mb-8">
-          Data &amp; Code
-        </h2>
-        <p class="text-sm text-eth-grey italic">
-          Replication packages and code repositories will appear here.
-        </p>
-
-      </div>
+    <!-- ── Data & Code ───────────────────────────────── -->
+    <section id="code">
+      <h2>Data &amp; Code</h2>
+      <p class="placeholder">Replication packages and code repositories will appear here.</p>
     </section>
 
   </main>
 
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-  <footer class="border-t border-gray-100 py-8 px-6 text-center text-xs text-eth-grey">
-    <p>
-      Mohamed NANA &middot; Scientific Assistant &middot;
-      <a href="https://ethz.ch" target="_blank" rel="noopener" class="hover:text-eth-blue transition-colors">
-        ETH Zürich
-      </a>
-    </p>
-    <p class="mt-1">Last updated: February 2026</p>
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <footer>
+    Mohamed NANA &middot; Scientific Assistant &middot;
+    <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>
+    &middot; Last updated February 2026
   </footer>
 
 </body>
