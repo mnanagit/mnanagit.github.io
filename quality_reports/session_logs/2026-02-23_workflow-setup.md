@@ -78,3 +78,8 @@ configuration files, set ETH branding, and replace the Emory-branded landing pag
 2. Build out Research section: add actual working papers and publications
 3. Set up `Quarto/_quarto.yml` for multi-page website when ready to add Quarto-rendered content
 4. Add profile photo to `Figures/` and reference it in `docs/index.html`
+
+
+---
+**Context compaction (manual) at 10:01**
+Check git log and quality_reports/plans/ for current state.

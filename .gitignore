@@ -1,55 +1,25 @@
 # ==============================================================================
-# .gitignore for Academic Claude Code Projects
+# .gitignore — Mohamed Nana academic website
+# Only the docs/ folder (the deployed site) is tracked.
+# Everything else is local working material.
 # ==============================================================================
 
-# LaTeX build artifacts
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.log
-*.nav
-*.out
-*.snm
-*.toc
-*.vrb
-*.synctex.gz
-*.run.xml
-*-blx.bib
+# ── Ignore everything by default ──────────────────────────────────────────────
+*
 
-# Compiled PDFs (uncomment to track specific PDFs)
-# *.pdf
+# ── Re-allow the files/folders git should track ───────────────────────────────
+!.gitignore
+!CLAUDE.md
+!README.md
+!MEMORY.md
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
+# docs/ — the GitHub Pages site (the only thing that deploys)
+!docs/
+!docs/**
 
-# R
-.Rproj.user/
-.Rhistory
-.RData
-.Rdata
-
-# OS files
+# OS / editor noise
 .DS_Store
 Thumbs.db
-
-# Claude Code local files (not shared across machines)
-.claude/settings.local.json
-.claude/state/
-
-# IDE
-.vscode/
-.idea/
 *.swp
 *.swo
 *~
-
-# Quarto rendering artifacts
-/.quarto/
-
-# Output artifacts — uncomment lines below based on your preference
-# *.rds
-# output/**/*.rds

@@ -1,23 +1,9 @@
-# CLAUDE.MD -- Academic Project Development with Claude Code
+# CLAUDE.md — Mohamed NANA Academic Website
 
-<!-- HOW TO USE: Replace [BRACKETED PLACEHOLDERS] with your project info.
-     Customize Beamer environments and CSS classes for your theme.
-     Keep this file under ~150 lines — Claude loads it every session.
-     See the guide at docs/workflow-guide.html for full documentation. -->
-
-**Project:** Mohamed NANA — Personal Academic Website
-**Institution:** ETH Zürich (Scientific Assistant, Development Economics)
+**Project:** Personal academic website
+**Stack:** Plain HTML · CSS · JavaScript
+**Deployment:** GitHub Pages (`docs/` folder → `mohamednana.github.io`)
 **Branch:** main
-
----
-
-## Core Principles
-
-- **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
-- **Verify after** -- compile/render and confirm output at the end of every task
-- **Single source of truth** -- HTML/Quarto `.qmd` is authoritative; Beamer `.tex` derives from it (website-first)
-- **Quality gates** -- nothing ships below 80/100
-- **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to MEMORY.md
 
 ---
 
@@ -25,111 +11,77 @@
 
 ```
 website-momo-nana/
-├── CLAUDE.MD                    # This file
-├── .claude/                     # Rules, skills, agents, hooks
-├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and plot assets
-├── Quarto/                      # Quarto .qmd files + eth-clean.scss theme
-├── docs/                        # GitHub Pages root (auto-generated)
-│   ├── index.html               # Homepage
-│   └── slides/                  # Rendered presentations
-├── scripts/                     # Utility scripts + R code
-│   └── R/                       # R analysis scripts
-├── quality_reports/             # Plans, session logs, merge reports
-├── explorations/                # Research sandbox (see rules)
-├── templates/                   # Session log, quality report templates
-├── master_supporting_docs/      # Reference papers and existing slides
-├── Slides/                      # Beamer .tex files (inactive — future use)
-└── Preambles/                   # LaTeX headers (inactive — future use)
+├── CLAUDE.md                        # This file
+├── README.md
+├── MEMORY.md                        # AI memory index
+├── .claude/                         # Claude Code config (skills, hooks, rules)
+│
+├── docs/                            # GitHub Pages root (what visitors see)
+│   ├── index.html                   # About / homepage
+│   ├── styles.css                   # Shared stylesheet — edit here, applies everywhere
+│   ├── pages/
+│   │   ├── research.html
+│   │   ├── teaching.html
+│   │   ├── projects.html
+│   │   └── contact.html
+│   ├── assets/
+│   │   ├── cv/                      # Drop cv_YYYY_MM.pdf here
+│   │   ├── papers/                  # Paper PDFs
+│   │   ├── photos/                  # Profile photos
+│   │   ├── figures/                 # Maps, charts
+│   │   └── icons/
+│   └── data/
+│       └── publications.json        # Structured publication data
+│
+├── drafts/                          # Working text — not served
+│   ├── biography.md
+│   ├── research_statement.md
+│   └── website_text.md
+│
+├── quality_reports/                 # Session logs and plans
+│   └── session_logs/
+└── templates/                       # Claude workflow templates
 ```
 
 ---
 
-## Commands
+## Editing the Site
+
+### Adding a paper to Research
+1. Open `docs/pages/research.html`
+2. Duplicate the `<div class="paper">` block
+3. Fill in title, authors, year, abstract, and links
+4. Also update `docs/data/publications.json`
+
+### Updating the CV
+- Drop the new PDF into `docs/assets/cv/` using the name `cv_YYYY_MM.pdf`
+- Update the `href` in the nav of every HTML file (`index.html` + all `pages/*.html`)
+
+### Changing shared styles
+- Edit `docs/styles.css` — one file, applies to all pages
+
+### Adding a new page
+1. Copy any existing page from `docs/pages/`
+2. Update `<title>`, `<meta name="description">`, and content
+3. Add a nav link in every other HTML file
+
+---
+
+## Nav path reference
+
+| From file | CSS path | Root link |
+|-----------|----------|-----------|
+| `docs/index.html` | `styles.css` | `index.html` |
+| `docs/pages/*.html` | `../styles.css` | `../index.html` |
+
+---
+
+## Deployment
+
+`docs/` is served directly by GitHub Pages. Push to `main` — no build step needed.
 
 ```bash
-# Render Quarto website / slides
-quarto render Quarto/file.qmd          # Single file
-quarto render                           # All files (requires _quarto.yml)
-
-# Deploy to GitHub Pages
-./scripts/sync_to_docs.sh              # Sync all rendered output to docs/
-./scripts/sync_to_docs.sh LectureN    # Sync specific lecture
-
-# Quality score
-python scripts/quality_score.py Quarto/file.qmd
-python scripts/quality_score.py docs/index.html
-
-# LaTeX (3-pass, XeLaTeX — future use when Slides/ is active)
-# cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-# BIBINPUTS=..:$BIBINPUTS bibtex file && (repeat xelatex twice more)
+git add docs/
+git commit -m "update: ..."
+git push
 ```
-
----
-
-## Quality Thresholds
-
-| Score | Gate | Meaning |
-|-------|------|---------|
-| 80 | Commit | Good enough to save |
-| 90 | PR | Ready for deployment |
-| 95 | Excellence | Aspirational |
-
----
-
-## Skills Quick Reference
-
-| Command | What It Does |
-|---------|-------------|
-| `/compile-latex [file]` | 3-pass XeLaTeX + bibtex |
-| `/deploy [LectureN]` | Render Quarto + sync to docs/ |
-| `/extract-tikz [LectureN]` | TikZ → PDF → SVG |
-| `/proofread [file]` | Grammar/typo/overflow review |
-| `/visual-audit [file]` | Slide layout audit |
-| `/pedagogy-review [file]` | Narrative, notation, pacing review |
-| `/review-r [file]` | R code quality review |
-| `/qa-quarto [LectureN]` | Adversarial Quarto vs Beamer QA |
-| `/slide-excellence [file]` | Combined multi-agent review |
-| `/translate-to-quarto [file]` | Beamer → Quarto translation |
-| `/validate-bib` | Cross-reference citations |
-| `/devils-advocate` | Challenge slide design |
-| `/create-lecture` | Full lecture creation |
-| `/commit [msg]` | Stage, commit, PR, merge |
-| `/lit-review [topic]` | Literature search + synthesis |
-| `/research-ideation [topic]` | Research questions + strategies |
-| `/interview-me [topic]` | Interactive research interview |
-| `/review-paper [file]` | Manuscript review |
-| `/data-analysis [dataset]` | End-to-end R analysis |
-
----
-
-## Quarto / Website CSS Classes
-
-| Class             | Effect                              | Use Case                        |
-|-------------------|-------------------------------------|---------------------------------|
-| `.paper-card`     | Card with border + hover shadow     | Publication entries             |
-| `.badge`          | ETH Petrol pill tag                 | Field / topic labels            |
-| `.hero`           | Full-width ETH Blue banner          | Landing page hero section       |
-| `.section-title`  | ETH Blue heading + underline        | Section headings                |
-| `.abstract`       | Collapsible grey block              | Paper abstracts                 |
-| `.smaller`        | 85% font size                       | Dense content, footnotes        |
-
-## Beamer Custom Environments
-
-<!-- Beamer / Slides infrastructure is inactive (future use).
-     When Slides/ is activated, add your environments here.
-     Example entries:
-     | `keybox` | ETH Blue background box | Key points |
-     | `definitionbox[Title]` | ETH-bordered titled box | Formal definitions |
--->
-
----
-
-## Current Project State
-
-| Section    | File               | Status    | Key Content                          |
-|------------|--------------------|-----------|--------------------------------------|
-| Home       | `docs/index.html`  | Active    | Bio, research interests, recent work |
-| Research   | TBD                | Planned   | Working papers, publications         |
-| Teaching   | TBD                | Planned   | Course materials                     |
-| Data/Code  | TBD                | Planned   | Replication packages                 |

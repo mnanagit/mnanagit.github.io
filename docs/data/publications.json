@@ -1,0 +1,15 @@
+[
+  {
+    "type": "working_paper",
+    "title": "[Paper Title — Replace This]",
+    "authors": ["Mohamed NANA"],
+    "year": 2025,
+    "status": "Working paper",
+    "abstract": "[Abstract text goes here.]",
+    "links": {
+      "pdf": null,
+      "ssrn": null,
+      "github": null
+    }
+  }
+]

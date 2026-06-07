@@ -1,327 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohamed NANA — ETH Zürich</title>
-  <meta name="description" content="Mohamed NANA — Scientific Assistant at ETH Zürich. Development Economics researcher." />
+  <title>Mohamed Nana &mdash; Economist</title>
 
-  <!-- Montserrat font (matching atagade.com) -->
+  <meta name="description" content="Mohamed Nana &mdash; Research Assistant at ETH Z&uuml;rich, NADEL. Development economics, political economy, labor economics." />
+  <meta name="author" content="Mohamed Nana" />
+  <link rel="canonical" href="https://mohamednana.github.io" />
+  <meta property="og:title" content="Mohamed Nana &mdash; Economist" />
+  <meta property="og:description" content="Research Assistant at ETH Z&uuml;rich. Development economics, political economy, applied econometrics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mohamednana.github.io" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── Reset & base ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:      #383838;
-      --text:    #f9f9f9;
-      --muted:   #aaaaaa;
-      --accent:  #cc0000;
-      --divider: rgba(255,255,255,0.10);
-      --max-w:   760px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: opacity 0.15s ease;
-    }
-    a:hover { opacity: 0.80; }
-
-    /* ── Nav ──────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--divider);
-      padding: 18px 24px;
-    }
-    nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 24px;
-      list-style: none;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      align-items: center;
-    }
-    nav a {
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    nav a:hover { color: var(--accent); opacity: 1; }
-    nav .cv-link {
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 3px 10px;
-      border-radius: 2px;
-      font-size: 11px;
-    }
-    nav .cv-link:hover { background: var(--accent); color: #fff; opacity: 1; }
-
-    /* ── Main wrapper ─────────────────────────────── */
-    main {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 48px 24px 64px;
-    }
-
-    /* ── Hero ─────────────────────────────────────── */
-    .hero {
-      display: flex;
-      gap: 28px;
-      align-items: flex-start;
-      margin-bottom: 48px;
-    }
-
-    .avatar {
-      flex-shrink: 0;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(204,0,0,0.06);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-text h1 {
-      font-size: 1.9rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .hero-text .title {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero-text .bio {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #d8d8d8;
-      max-width: 560px;
-    }
-
-    /* Contact / social row */
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 20px;
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .contact-row a {
-      color: var(--muted);
-      font-weight: 600;
-    }
-    .contact-row a:hover { color: var(--accent); opacity: 1; }
-
-    /* ── Section headings ─────────────────────────── */
-    section {
-      margin-bottom: 48px;
-    }
-
-    section h2 {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border-bottom: 1px solid var(--divider);
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-    }
-
-    /* ── Paper entries ────────────────────────────── */
-    .paper {
-      margin-bottom: 24px;
-    }
-
-    .paper .paper-title {
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-    .paper .paper-title a { color: var(--text); }
-    .paper .paper-title a:hover { color: var(--accent); opacity: 1; }
-
-    .paper .paper-meta {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .paper-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 6px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    /* Abstract toggle */
-    details { margin-top: 6px; }
-    details > summary {
-      cursor: pointer;
-      list-style: none;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-block;
-    }
-    details > summary::-webkit-details-marker { display: none; }
-    details > summary::after { content: " ↓"; }
-    details[open] > summary::after { content: " ↑"; }
-
-    details .abstract-text {
-      margin-top: 8px;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #c8c8c8;
-      border-left: 2px solid var(--accent);
-      padding-left: 14px;
-    }
-
-    /* ── Placeholder text ─────────────────────────── */
-    .placeholder {
-      font-size: 13px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 24px 24px 48px;
-      border-top: 1px solid var(--divider);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* ── Responsive ───────────────────────────────── */
-    @media (max-width: 600px) {
-      .hero { flex-direction: column; gap: 16px; }
-      .avatar { width: 72px; height: 72px; font-size: 18px; }
-      .hero-text h1 { font-size: 1.5rem; }
-      nav ul { gap: 4px 16px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ── Navigation ─────────────────────────────────── -->
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#code">Data &amp; Code</a></li>
-      <li><a href="#" class="cv-link">CV</a></li>
-    </ul>
-  </nav>
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="overlay"></div>
 
-  <!-- ── Main content ───────────────────────────────── -->
-  <main id="about">
+  <!-- ── Mobile top bar (hidden on desktop) ── -->
+  <div class="topbar" id="topbar">
+    <button class="topbar-toggle" id="topbar-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-name">Mohamed Nana</span>
+  </div>
 
-    <!-- Hero / Bio -->
-    <div class="hero">
-      <div class="avatar">MN</div>
-      <div class="hero-text">
-        <h1>Mohamed NANA</h1>
-        <p class="title">Scientific Assistant &middot; ETH Zürich</p>
-        <p class="bio">
-          I am a Scientific Assistant at ETH Zürich working in Development Economics.
-          My research interests lie in development economics, with a focus on health
-          and public infrastructure, and on how new technologies can improve welfare
-          in sub-Saharan Africa.
-        </p>
-        <div class="contact-row">
-          <a href="mailto:monana@ethz.ch">monana@ethz.ch</a>
-          <a href="https://github.com/mnanagit" target="_blank" rel="noopener">GitHub</a>
-          <!-- Add Google Scholar, SSRN, LinkedIn, Twitter/X as needed -->
+  <div class="layout">
+
+    <!-- ════════════════════════════ SIDEBAR ════════════════════════════ -->
+    <aside class="sidebar" id="sidebar" role="complementary" aria-label="Site navigation">
+      <div class="s-wrap">
+
+        <!-- Photo -->
+        <div class="s-photo-ring">
+          <img
+            src="assets/photos/mohamed_nana.jpg"
+            alt="Mohamed Nana"
+            class="s-photo"
+            onerror="this.style.display='none'; this.parentNode.querySelector('.s-photo-placeholder').style.display='flex';"
+          />
+          <div class="s-photo-placeholder" style="display:none;">MN</div>
         </div>
-      </div>
-    </div>
 
-    <!-- ── Research ──────────────────────────────────── -->
-    <section id="research">
+        <!-- Name & position -->
+        <h1 class="s-name">Mohamed Nana</h1>
+        <p class="s-tagline">Research Assistant<br>NADEL &middot; ETH Z&uuml;rich</p>
 
-      <h2>Working Papers</h2>
+        <!-- Separator -->
+        <div class="s-rule" role="separator"></div>
 
-      <!-- Paper entry — duplicate for each paper -->
-      <div class="paper">
-        <p class="paper-title">
-          <a href="#">[Paper Title — Replace This]</a>
-        </p>
-        <p class="paper-meta">
-          Mohamed NANA &mdash; <em>Working paper, 2025</em>
-        </p>
-        <details>
-          <summary>Abstract</summary>
-          <p class="abstract-text">
-            [Abstract text goes here. Describe the paper's question, method, and main
-            findings in 3–5 sentences.]
+        <!-- Navigation -->
+        <nav class="s-nav" role="navigation" aria-label="Main navigation">
+          <a class="s-link active" data-panel="about" href="#">
+            <svg class="s-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            About
+          </a>
+          <a class="s-link" data-panel="research" href="#">
+            <svg class="s-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Research
+          </a>
+          <a class="s-link" data-panel="experience" href="#">
+            <svg class="s-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg>
+            Experience
+          </a>
+          <a class="s-link" data-panel="education" href="#">
+            <svg class="s-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Education
+          </a>
+          <a class="s-link" data-panel="contact" href="#">
+            <svg class="s-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Contact
+          </a>
+        </nav>
+
+        <!-- CV -->
+        <a href="assets/cv/cv.pdf" class="s-cv" target="_blank" rel="noopener">Curriculum Vitae &nearr;</a>
+
+        <!-- Social icons -->
+        <div class="s-social" role="list" aria-label="Social profiles">
+          <a href="mailto:monana@ethz.ch" class="s-icon" title="Email" role="listitem">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a href="https://github.com/mnanagit" class="s-icon" title="GitHub" target="_blank" rel="noopener" role="listitem">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mohamed-nana-1a3079213/" class="s-icon" title="LinkedIn" target="_blank" rel="noopener" role="listitem">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://orcid.org/0009-0009-7108-4938" class="s-icon" title="ORCID" target="_blank" rel="noopener" role="listitem">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+          </a>
+        </div>
+
+        <!-- Theme toggle -->
+        <div class="s-theme-toggle">
+          <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
+            <svg id="theme-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <span id="theme-label">Light</span>
+          </button>
+        </div>
+
+      </div><!-- /.s-wrap -->
+    </aside>
+
+    <!-- ════════════════════════════ CONTENT ════════════════════════════ -->
+    <main class="content" id="content" role="main">
+
+      <!-- ── ABOUT ── -->
+      <section class="panel active" id="panel-about" aria-labelledby="about-title">
+        <div class="panel-body">
+          <p class="breadcrumb">Home</p>
+          <h2 class="panel-title" id="about-title">About Me</h2>
+          <hr class="panel-rule" />
+
+          <p class="about-para">
+            I am a Research Assistant at <strong>ETH Z&uuml;rich</strong> (NADEL) and a graduate of the
+            <strong>Paris School of Economics</strong>, where I completed the M2 in Analysis and Policy
+            in Economics with Distinction. I also hold a Master&rsquo;s degree in Mathematical Economics
+            and Statistics from the <strong>African School of Economics</strong>. My research interests
+            span development economics, political economy, labor economics, and environmental economics,
+            with a particular focus on understanding how institutions, conflict, inequality, and climate
+            shocks shape economic outcomes in low- and middle-income countries. I am broadly interested
+            in applying modern econometric methods to identify causal mechanisms and generate evidence
+            that can inform public policy.
           </p>
-        </details>
-        <div class="paper-links">
-          <a href="#">PDF</a>
-          <a href="#">SSRN</a>
+
+          <!-- Current position -->
+          <div class="about-block">
+            <h3 class="subsec-title">Currently</h3>
+            <div class="mini-tl">
+              <div class="mini-tl-meta">
+                <span>Nov 2025 &ndash; Jul 2026</span>
+                <span>ETH Z&uuml;rich, NADEL</span>
+              </div>
+              <div>
+                <p class="mini-tl-role">Research Assistant</p>
+                <p class="mini-tl-detail">Development Economics Group &middot; Prof. Isabel G&uuml;nther</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selected research -->
+          <div class="about-block">
+            <h3 class="subsec-title">Selected Research</h3>
+
+            <article class="sel-paper">
+              <a href="#" class="sel-paper-title" onclick="showPanel('research'); return false;">
+                Military Empowerment and Internal Security: Evidence from Regime
+                Transition in Burkina Faso
+              </a>
+              <p class="sel-paper-meta">
+                Mohamed Nana &mdash; <em>Master's thesis, PSE, 2025</em>
+              </p>
+            </article>
+
+            <article class="sel-paper">
+              <a href="#" class="sel-paper-title" onclick="showPanel('research'); return false;">
+                Climate Shocks and the Distribution of Income and Wealth:
+                Evidence from 159 Countries, 1980&ndash;2023
+              </a>
+              <p class="sel-paper-meta">
+                Nana, Bothe, Chancel &mdash; <em>WIL Technical Note 2026/01</em>
+              </p>
+            </article>
+          </div>
+
         </div>
-      </div>
-      <!-- End paper entry -->
+      </section>
 
-      <h2 style="margin-top: 36px;">Publications</h2>
-      <p class="placeholder">Publications will appear here.</p>
+      <!-- ── RESEARCH ── -->
+      <section class="panel" id="panel-research" aria-labelledby="research-title">
+        <div class="panel-body">
+          <p class="breadcrumb">Home / Research</p>
+          <h2 class="panel-title" id="research-title">My Research</h2>
+          <hr class="panel-rule" />
 
-    </section>
+          <div class="papers-group">
+            <h3 class="papers-heading">Working Papers</h3>
 
-    <!-- ── Teaching ──────────────────────────────────── -->
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <p class="placeholder">Teaching materials and course information will appear here.</p>
-    </section>
+            <article class="paper">
+              <h4 class="paper-title">
+                Climate Shocks and the Distribution of Income and Wealth:
+                Evidence from 159 Countries, 1980&ndash;2023
+              </h4>
+              <p class="paper-by">Mohamed Nana, Philipp Bothe, Lucas Chancel</p>
+              <p class="paper-venue">
+                <em>World Inequality Lab Technical Note 2026/01.</em>
+              </p>
+              <div class="paper-badges">
+                <span class="pbadge pbadge-pub">Technical Note</span>
+              </div>
+              <p class="paper-abstract">
+                We study the effects of temperature shocks on the distribution of
+                income and wealth across 159 countries over 1980&ndash;2023.
+                Combining distributional data from the World Inequality Database
+                with disaggregated daily climate records, panel regressions with
+                country and year fixed effects reveal a nonlinear relationship:
+                extreme heat (days above 30&deg;C) significantly reduces income growth
+                by 0.06&ndash;0.07 percentage points per additional day. The
+                damage pattern is remarkably uniform across the income
+                distribution, with no statistically distinguishable differences
+                between deciles.
+              </p>
+              <div class="paper-links">
+                <a href="#" class="paper-link">PDF</a>
+              </div>
+            </article>
 
-    <!-- ── Data & Code ───────────────────────────────── -->
-    <section id="code">
-      <h2>Data &amp; Code</h2>
-      <p class="placeholder">Replication packages and code repositories will appear here.</p>
-    </section>
+            <article class="paper">
+              <h4 class="paper-title">
+                Military Empowerment and Internal Security: Evidence from Regime
+                Transition in Burkina Faso
+              </h4>
+              <p class="paper-by">Mohamed Nana</p>
+              <p class="paper-venue">
+                <em>Master's thesis, Paris School of Economics, 2025.</em>
+                Supervisor: Prof. Olivier Vanden Eynde
+              </p>
+              <div class="paper-badges">
+                <span class="pbadge pbadge-wp">Working Paper</span>
+              </div>
+              <p class="paper-abstract">
+                This paper investigates the impact of regime change and subsequent
+                military empowerment on internal conflict dynamics in Burkina Faso.
+                Using a difference-in-differences design and event study analysis
+                at the commune level, I examine variations in violence before and
+                after the January 2022 military coup, conditional on proximity to
+                national security force bases. Enhanced military capabilities led
+                to a significant reduction in violent events, most pronounced in
+                communes located further from military installations &mdash; suggesting
+                that empowerment extended operational reach to previously
+                underserved areas.
+              </p>
+              <div class="paper-links">
+                <a href="#" class="paper-link">PDF</a>
+                <a href="#" class="paper-link">SSRN</a>
+              </div>
+            </article>
 
-  </main>
+            <article class="paper">
+              <h4 class="paper-title">
+                Healthy Diets in Eight West African Countries: Access and
+                Preferences
+              </h4>
+              <p class="paper-by">
+                Rachel Gilbert, Herv&eacute; Gu&eacute;n&eacute;, Harounan Kazianga, William Masters,
+                Mohamed Nana
+              </p>
+              <p class="paper-venue">
+                <em>Preliminary &mdash; do not cite without permission. 2025.</em>
+              </p>
+              <div class="paper-badges">
+                <span class="pbadge pbadge-rev">Under Review</span>
+              </div>
+              <p class="paper-abstract">
+                Using data from approximately 46,000 households surveyed in
+                2018&ndash;19 and 2021&ndash;22, we estimate an Exact Affine
+                Stone Index demand system for 19 goods in rural and urban areas
+                of eight West African countries. We simulate the impact of price
+                reductions or vouchers for locally available nutrient-rich foods
+                compared to cash transfers. Cash transfers worth 25% of mean
+                per-capita expenditure for the poorest quartile increase
+                consumption of nutrient-rich items by 15&ndash;40% for vegetables,
+                fruit, and legumes.
+              </p>
+              <div class="paper-links">
+                <a href="#" class="paper-link">PDF</a>
+              </div>
+            </article>
 
-  <!-- ── Footer ─────────────────────────────────────── -->
-  <footer>
-    Mohamed NANA &middot; Scientific Assistant &middot;
-    <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>
-    &middot; Last updated February 2026
-  </footer>
+            <article class="paper">
+              <h4 class="paper-title">
+                Not All Inequalities Are Created Equal: Neutral Public-Good
+                Allocation and Persistent Ethnic Disparities in Burkina Faso
+              </h4>
+              <p class="paper-by">
+                Harounan Kazianga, Mohamed Nana, Tade Okediji, Rodney Smith,
+                Brice Zoungrana
+              </p>
+              <p class="paper-venue"><em>Under review, 2024.</em></p>
+              <div class="paper-badges">
+                <span class="pbadge pbadge-rev">Under Review</span>
+              </div>
+              <p class="paper-abstract">
+                This paper examines how historical spatial endowments, rather than
+                explicit ethnic discrimination, have created persistent ethnic
+                inequalities in Burkina Faso. Communes with higher historical
+                population density received significantly more primary schools per
+                10 km&sup2;, raising completion rates and formal labor market
+                participation. Ethnic disparities align closely with these
+                historical settlement patterns; controlling for educational
+                attainment nearly eliminates ethnic employment gaps, indicating
+                that disparities arise from unequal school access rooted in
+                geography rather than labor market discrimination.
+              </p>
+              <div class="paper-links">
+                <a href="#" class="paper-link">PDF</a>
+              </div>
+            </article>
+          </div><!-- /.papers-group -->
 
+          <div class="papers-group">
+            <h3 class="papers-heading">Work in Progress</h3>
+            <p class="wip-note">Additional projects available upon request.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── EXPERIENCE ── -->
+      <section class="panel" id="panel-experience" aria-labelledby="exp-title">
+        <div class="panel-body">
+          <p class="breadcrumb">Home / Experience</p>
+          <h2 class="panel-title" id="exp-title">Research Experience</h2>
+          <hr class="panel-rule" />
+
+          <ol class="timeline" reversed>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Nov 2025 &ndash; Jul 2026</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">ETH Z&uuml;rich</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Assistant</p>
+                <p class="tl-detail">Development Economics Group &middot; Prof. Isabel G&uuml;nther</p>
+                <p class="tl-desc">Supporting research projects and building an interactive dashboard for the Swiss Panel Global Cooperation survey.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Jun &ndash; Aug 2025</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">Paris School of Economics</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Engineer</p>
+                <p class="tl-detail">Prof. Sylvie Lambert</p>
+                <p class="tl-desc">Survey data digitization, quality control, and Stata programming.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Aug 2024 &ndash; May 2025</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">World Inequality Lab &middot; Paris</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Assistant</p>
+                <p class="tl-detail">Profs. Lucas Chancel &amp; Philipp Bothe</p>
+                <p class="tl-desc">Built an integrated income&ndash;wealth&ndash;climate dataset to study climate shocks and inequality across 159 countries.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Jan &ndash; Jul 2024</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">UC Berkeley &middot; Kananga, DRC</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Intern</p>
+                <p class="tl-detail">Prof. Jonathan Weigel</p>
+                <p class="tl-desc">Field implementation of an RCT on local tax-system design in Kananga. Led baseline data collection including survey programming, enumerator supervision, and data cleaning.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Nov 2023 &ndash; May 2025</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">African Economic Research Consortium</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Assistant</p>
+                <p class="tl-detail">Profs. Harounan Kazianga &amp; William Masters</p>
+                <p class="tl-desc">Cleaned and analyzed World Bank household survey microdata matched to local market prices across 8 West African countries.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Apr &ndash; Oct 2023</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">Oklahoma State University</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research Assistant</p>
+                <p class="tl-detail">Prof. Harounan Kazianga</p>
+                <p class="tl-desc">Merged Afrobarometer data with the 1975 Burkina Faso census. Produced maps and regression tables linking school completion to initial regional conditions.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">Sep 2021 &ndash; Mar 2023</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">African School of Economics &middot; Benin</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Research &amp; Teaching Assistant</p>
+                <p class="tl-detail">Profs. Heffernan, Nchare, Nyeki</p>
+                <p class="tl-desc">RA on socio-economic impacts of COVID-19 in Africa. Taught Econometrics I &amp; II to Master's students.</p>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── EDUCATION ── -->
+      <section class="panel" id="panel-education" aria-labelledby="edu-title">
+        <div class="panel-body">
+          <p class="breadcrumb">Home / Education</p>
+          <h2 class="panel-title" id="edu-title">Education</h2>
+          <hr class="panel-rule" />
+
+          <ol class="timeline" reversed>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">2024 &ndash; 2025</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">Paris School of Economics</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">M2 Analysis and Policy in Economics (APE)</p>
+                <p class="tl-detail">Distinction &middot; 14/20 &middot; Supervisor: Prof. Olivier Vanden Eynde</p>
+                <p class="tl-desc">Development, Microeconometrics, Political Economy, Economic History, Machine Learning in Economics.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">2020 &ndash; 2022</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">African School of Economics &middot; Benin</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Master of Mathematics, Economics and Statistics</p>
+                <p class="tl-detail">GPA 3.9 / 4.3 (A)</p>
+                <p class="tl-desc">Microeconomics, Macroeconomics, Mathematics, Econometrics and Statistics.</p>
+              </div>
+            </li>
+
+            <li class="tl-item">
+              <div class="tl-meta">
+                <span class="tl-dates">2017 &ndash; 2020</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-inst">Institut Sup&eacute;rieur Priv&eacute; Polytechnique &middot; Burkina Faso</span>
+              </div>
+              <div class="tl-body">
+                <p class="tl-role">Bachelor of Finance and Accounting</p>
+                <p class="tl-detail">18 / 20 (A+) &middot; Ranked first in program</p>
+                <p class="tl-desc">National honor for State Superior Technician National Exam (2019).</p>
+              </div>
+            </li>
+
+          </ol>
+
+          <div class="skills-section">
+            <h3 class="subsec-title">Technical Skills</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <p class="skill-label">Econometrics &amp; Statistics</p>
+                <p class="skill-val">R &middot; Stata &middot; Python</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-label">Geospatial</p>
+                <p class="skill-val">QGIS &middot; GeoPandas</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-label">Data Collection</p>
+                <p class="skill-val">SurveyCTO &middot; Qualtrics</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-label">Languages</p>
+                <p class="skill-val">French &middot; English &middot; Moor&eacute; &middot; Dioula</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CONTACT ── -->
+      <section class="panel" id="panel-contact" aria-labelledby="contact-title">
+        <div class="panel-body">
+          <p class="breadcrumb">Home / Contact</p>
+          <h2 class="panel-title" id="contact-title">Contact</h2>
+          <hr class="panel-rule" />
+
+          <p class="contact-intro">
+            I am currently based at ETH Z&uuml;rich. Feel free to reach me by email.
+          </p>
+
+          <div class="contact-cols">
+            <div class="contact-col">
+              <p class="contact-label">Email</p>
+              <a href="mailto:monana@ethz.ch" class="contact-link">monana@ethz.ch</a>
+              <a href="mailto:mohamed.nana@psemail.eu" class="contact-link">mohamed.nana@psemail.eu</a>
+            </div>
+            <div class="contact-col">
+              <p class="contact-label">Profiles</p>
+              <a href="https://github.com/mnanagit" class="contact-link" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/mohamed-nana-1a3079213/" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://orcid.org/0009-0009-7108-4938" class="contact-link" target="_blank" rel="noopener">ORCID</a>
+            </div>
+            <div class="contact-col">
+              <p class="contact-label">Office</p>
+              <address class="contact-addr">
+                ETH Z&uuml;rich &middot; NADEL<br>
+                Clausiusstrasse 37, CLD C2<br>
+                8092 Z&uuml;rich, Switzerland
+              </address>
+            </div>
+          </div>
+
+          <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text-dim);">
+            &copy; 2025 Mohamed Nana. All rights reserved.
+          </footer>
+        </div>
+      </section>
+
+    </main><!-- /.content -->
+  </div><!-- /.layout -->
+
+  <script src="script.js"></script>
 </body>
 </html>
