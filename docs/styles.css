@@ -423,6 +423,15 @@ a:hover { text-decoration: underline; }
 /* ═══════════════════════════════════════════════════════════════════════
    RESEARCH PAPERS
 ═══════════════════════════════════════════════════════════════════════ */
+.research-note {
+  font-size:     0.82rem;
+  color:         var(--text-dim);
+  font-style:    italic;
+  margin-bottom: 2rem;
+}
+.research-note a { color: var(--link); }
+.research-note a:hover { text-decoration: underline; }
+
 .papers-group { margin-bottom: 2.5rem; }
 
 .papers-heading {
