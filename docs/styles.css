@@ -290,7 +290,7 @@ a:hover { text-decoration: underline; }
 .panel { display: none; min-height: 100vh; padding: 3rem 3rem 4rem; }
 .panel.active { display: block; }
 
-.panel-body { max-width: var(--content-max); }
+.panel-body { max-width: 100%; }
 
 .panel.active .panel-body {
   animation: fadeUp 0.3s ease forwards;
